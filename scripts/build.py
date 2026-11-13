@@ -406,11 +406,15 @@ def stats() -> None:
                 lvl = min(4, 1 + int(3 * (c - 1) / max(mx - 1, 1) + 0.5)) if mx > 1 else 2
                 b.append(f'<rect x="{num(x)}" y="{num(y)}" width="{cell}" height="{cell}" rx="3" fill="{levels[lvl]}"/>')
     ly = gy + 7 * (cell + gap) + 14
-    b.append(text("LESS", W - gx - 5 * (cell + 4) - 12, ly + 10, 10, DIM, "jb5", tracking=0.08, anchor="end"))
+    # legend, right-aligned to the grid edge: LESS ▢▢▢▢▢ MORE
+    right = W - gx
+    more_w = tw("MORE", 10, "jb5", 0.08)
+    sq_x0 = right - more_w - 8 - 5 * 15 + 4
+    b.append(text("MORE", right, ly + 10, 10, DIM, "jb5", tracking=0.08, anchor="end"))
+    b.append(text("LESS", sq_x0 - 8, ly + 10, 10, DIM, "jb5", tracking=0.08, anchor="end"))
     for i, c in enumerate(["#FFFFFF"] + levels[1:]):
         op = ' fill-opacity="0.045"' if i == 0 else ""
-        b.append(f'<rect x="{num(W - gx - (5 - i) * (cell + 4) + 4)}" y="{ly}" width="11" height="11" rx="2.5" fill="{c}"{op}/>')
-    b.append(text("MORE", W - gx + 8, ly + 10, 10, DIM, "jb5", tracking=0.08))
+        b.append(f'<rect x="{num(sq_x0 + i * 15)}" y="{ly}" width="11" height="11" rx="2.5" fill="{c}"{op}/>')
     if not data:
         b.append(f'<rect x="{num(W / 2 - 260)}" y="{gy + 40}" width="520" height="36" rx="18" fill="{PANEL}" stroke="#fff" stroke-opacity="0.1"/>')
         b.append(text("Contribution calendar syncs from the GitHub API daily", W / 2, gy + 63, 12.5, MUTED, "jb4", anchor="middle"))
