@@ -1,8 +1,8 @@
 {
  "login": "Mohammed-Algoul",
- "public_repos": 7,
- "contributions": 69,
- "active_days": 11,
+ "public_repos": 8,
+ "contributions": 71,
+ "active_days": 12,
  "longest_streak": 3,
  "languages": [
   [
@@ -11,6 +11,10 @@
   ],
   [
    "HTML",
+   1
+  ],
+  [
+   "JavaScript",
    1
   ]
  ],
@@ -489,7 +493,7 @@
    0,
    0,
    0,
-   null,
+   2,
    null
   ]
  ],
@@ -548,5 +552,5 @@
   "2026-11-08",
   "2026-11-15"
  ],
- "generated_at": "2026-11-19T13:28:54+00:00"
+ "generated_at": "2026-11-20T13:10:24+00:00"
 }
